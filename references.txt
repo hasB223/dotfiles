@@ -1,0 +1,5 @@
+configuring nvim with lua: 
+	https://github.com/nanotee/nvim-lua-guide
+
+kickstart guide:
+	https://github.com/nvim-lua/kickstart.nvim
