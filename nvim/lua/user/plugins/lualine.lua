@@ -1,8 +1,12 @@
 require('lualine').setup({
   options = {
     theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
     globalstatus = false,
   },
   sections = {
@@ -20,10 +24,12 @@ require('lualine').setup({
     },
     lualine_x = {
       'filetype',
+      -- 'encoding',
+      -- 'fileformat',
+    },
+    lualine_y = { -- indentation format for filetype
       'encoding',
       'fileformat',
-    },
-    lualine_y = {
       '(vim.bo.expandtab and "␠ " or "⇥ ") .. " " .. vim.bo.shiftwidth',
     },
     lualine_z = {

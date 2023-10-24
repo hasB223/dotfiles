@@ -42,3 +42,6 @@ vim.keymap.set('v', '<A-k>', ":move '<-2<CR>gv=gv")
 -- navigate buffers
 vim.keymap.set('n', '<Leader>,', ':bprev<CR>')
 vim.keymap.set('n', '<Leader>.', ':bnext<CR>')
+
+-- remove trailing whitespace on current buffer
+

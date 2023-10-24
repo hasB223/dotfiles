@@ -1,5 +1,58 @@
-configuring nvim with lua: 
+Configuring nvim with lua:
 	https://github.com/nanotee/nvim-lua-guide
 
-kickstart guide:
+Kickstart guide:
 	https://github.com/nvim-lua/kickstart.nvim
+
+Language server protocol:
+	null-ls
+		- linter and formatter
+		- want to display diagnostic information in the sign column for no lsp for them
+		- like a virtual language server that proxies information form external command to neovim lsp features
+		- can be used to display linting errors from something like eslint
+		- IMPORTANT: Archiving null-ls #1621 - https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1621
+		- jose-elias-alvarez/null-ls.nvim -> nvimtools/none-ls.nvim
+			https://github.com/nvimtools/none-ls.nvim
+		- feature
+			- Code actions
+			- Diagnostics (file- and project-level)
+			- Formatting (including range formatting)
+			- Hover
+			- Completion
+
+Find and replace
+	- backslash /
+	- find and replace all in buffer					:%s/Oldword/NewWord/g
+	- find: :%s/Oldword, replace:						:%s//NewWord/guide
+	- find and check before replace:					:%s/Oldword/NewWord/gc
+	- find and replace in visually selected portion:	:'<,'>s/Oldword/NewWord
+	- find occurence, every line that contain > at it end: :%g/[^>]$/p <-> :%g/RE/p - -> grep
+	- delete every line that contain div :%g/div/d
+	- delete every line that does not contain a div: :%v/div/d
+	- find and replace on entire project
+		- telescope live grep >  tab(select)/Ctrl+q(quick fix list) > :cdo s/Oldword/NewWord > :wa (save all)
+		- qfl - list of positions in files that we can operate on
+		- [q, ]q, to jump through the list
+		- (:c) ->
+			- :cdo - operate on specific matches on qfl
+			- :cfdo - do something on entire file/s in the qfl
+			- :cclose/ccl - close it 
+			- :cnext - next in qfl
+
+Automating repetitive changes
+	- incrementing number under cursor Ctrl+a, decrement Ctrl+x
+	- incrementing selection g+Ctrl+a, incrementing the lines downward
+		- shift/ctrl+v > highlight > g+Ctrl+a
+	- macros
+		- recording macros involve cursor navigation, deletion and other vim motions
+		- recording macros to q register, n-mode, q+q > 'recording @q'
+		- first q tells vim to record a macros, second q name the register to store the macros
+		- in recording, vim remembers every keystroke, after completing a keystroke sequence you intend to records
+		- press q again to exit recording
+		- to repeat the recorded macro, move the cursor to the position where the macros would work
+		- +<register> -> +q > ++ (repeat last macro) -> rename the buffer(optional) :Rename exp.ext
+		- to edit the q register -> new w register
+			- view keystroke, :register q (:reg q)
+			- paste the register: "q > p > edit the register > start of line > "w yy
+
+Delete all trailing whitespace -> :%s/\s\+$//g

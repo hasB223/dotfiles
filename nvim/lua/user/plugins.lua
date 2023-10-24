@@ -33,13 +33,17 @@ use({
   config = function()
     require('onedark').setup{
       style = 'darker', -- dark, darker, cool, deep, warm, warmer
-      -- toggle theme style ---
+      -- main options ---
       toggle_style_key = '<leader>ts', -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
       toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer',}, -- List of styles to toggle between + 'light'}
       transparent = true,  -- show/hide background
       term_colors = true, -- Change terminal color as per the selected theme style
       ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
       cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+      -- Lualine options --
+      lualine = {
+        transparent = true, -- lualine center bar transparency
+      },
    }
     -- set theme
     vim.cmd('colorscheme onedark')
@@ -57,10 +61,10 @@ use({
     -- })
 
     -- NvimTree directory line marker color
-    vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#3E4452' })
+    -- vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#3E4452' })
 
     -- ibl line color
-    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+    -- vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
   end,
 })
 --
@@ -97,7 +101,7 @@ use({
 -- Commenting support. Use `gcc` to un/comment text
 use('tpope/vim-commentary')
 
--- Add, change, and delete surrounding text. 
+-- Add, change, and delete surrounding text.
 -- https://github.com/tpope/vim-surround
 -- change: c, surr.: s, delete: d,
 -- exp: ('->"):`cs+'+"`, dst-> delete surr. text
@@ -109,7 +113,7 @@ use('tpope/vim-surround')
 -- Pairs of handy bracket mappings, like [b and ]b.
 use('tpope/vim-unimpaired')
 
--- Indent autodetection with editorconfig support. 
+-- Indent autodetection with editorconfig support.
 use('tpope/vim-sleuth')
 
 -- Allow plugins to enable repeating of commands using `.` .
@@ -159,7 +163,7 @@ use('jessarcher/vim-heritage')
 --   end,
 -- })
 
--- Add smooth scrolling to avoid jarring jumps. C-u, 
+-- Add smooth scrolling to avoid jarring jumps. C-u,
 use({
   'karb94/neoscroll.nvim',
   config = function()
@@ -179,14 +183,15 @@ use({
 })
 
 -- Split arrays and methods onto multiple lines, or join them back up.
--- use({
---   'AndrewRadev/splitjoin.vim',
---   config = function()
---     vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
---     vim.g.splitjoin_trailing_comma = 1
---     vim.g.splitjoin_php_method_chain_full = 1
---   end,
--- })
+-- gS <-> gJ
+use({
+  'AndrewRadev/splitjoin.vim',
+  config = function()
+    vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
+    vim.g.splitjoin_trailing_comma = 1
+    -- vim.g.splitjoin_php_method_chain_full = 1
+  end,
+})
 
 -- Automatically fix indentation when pasting code.
 use({
@@ -204,7 +209,7 @@ use {
     {'nvim-lua/plenary.nvim'},                    -- the one hard requirement, below is optional
     'kyazdani42/nvim-web-devicons',               -- display icon (nerd fonts) next to filename
     'nvim-telescope/telescope-live-grep-args.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }, -- improve fzf performance 
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }, -- improve fzf performance
   },
   config = function() -- points to personal/customized config file, omit this to use default config
     require('user/plugins/telescope')
@@ -258,6 +263,7 @@ use({
 })
 
 -- Git integration.
+-- https://github.com/lewis6991/gitsigns.nvim
 use({
   'lewis6991/gitsigns.nvim',
   config = function()
@@ -296,6 +302,9 @@ use({
     -- vim.g.floaterm_wintype = 'split'  -- open terminal at bottom, adjust height after closing: <F1:>. 'split' -> float : restart vim to see changes
     vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
     vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
+    vim.cmd([[
+      highlight link FloatermBorder TelescopePromptBorder
+    ]])
   end
 })
 
@@ -320,9 +329,9 @@ use({
    requires = {
      'williamboman/mason.nvim',
      'williamboman/mason-lspconfig.nvim',
-     -- 'b0o/schemastore.nvim',
-     -- 'jose-elias-alvarez/null-ls.nvim',
-     -- 'jayp0521/mason-null-ls.nvim',
+     'b0o/schemastore.nvim',
+     'nvimtools/none-ls.nvim', -- null-ls -> ARCHIVED
+     'jayp0521/mason-null-ls.nvim',
    },
    config = function()
      require('user/plugins/lspconfig')
@@ -346,6 +355,25 @@ use({
     require('user/plugins/cmp')
   end,
 })
+
+-- PHP Refactoring Tools
+-- use({
+--   'phpactor/phpactor',
+--   ft = 'php', -- tells pecker to lazyload this plugin only when we in php buffer
+--   run = 'composer install --no-dev --optimize-autoloader',  -- this plugin written in php, we need to use run hook to run composer install whenever we install or update the plugin
+--   config = function()
+--     vim.keymap.set('n', '<Leader>pm', ':PhpactorContextMenu<CR>')
+--     vim.keymap.set('n', '<Leader>pn', ':PhpactorClassNew<CR>')
+--   end,
+-- })
+
+-- Testing helper
+-- use({
+--   'vim-test/vim-test',
+--   config = function()
+--     require('user/plugins/vim-test')
+--   end,
+-- })
 
 
 

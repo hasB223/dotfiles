@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Remove Neovim (nvim) config and related files
+rm -rf $HOME/.config/nvim
+
+# Remove Kitty config (if you installed it)
+rm -rf $HOME/.config/kitty
+
+# Remove Tmux config (if you installed it)
+rm -rf $HOME/.tmux.conf
+
+# Remove the 't' script (if you installed it)
+rm -f $HOME/.local/bin/t
+
+# Remove the Neovim runtime directory (if you created it)
+rm -rf $HOME/.local/share/nvim
+
+# Optionally, remove any other files or directories you want to uninstall
+
+echo "Neovim dotfiles and related configurations have been uninstalled."

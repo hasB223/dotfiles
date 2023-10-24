@@ -59,37 +59,46 @@ require'lspconfig'.lua_ls.setup({
 -- require('lspconfig').tailwindcss.setup({ capabilities = capabilities })
 
 -- JSON
--- require('lspconfig').jsonls.setup({
---   capabilities = capabilities,
---   settings = {
---     json = {
---       schemas = require('schemastore').json.schemas(),
---     },
---   },
--- })
+require('lspconfig').jsonls.setup({
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+})
 
 -- null-ls
--- require('null-ls').setup({
---   sources = {
---     require('null-ls').builtins.diagnostics.eslint_d.with({
---       condition = function(utils)
---         return utils.root_has_file({ '.eslintrc.js' })
---       end,
---     }),
---     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
---     require('null-ls').builtins.formatting.eslint_d.with({
---       condition = function(utils)
---         return utils.root_has_file({ '.eslintrc.js' })
---       end,
---     }),
---     require('null-ls').builtins.formatting.prettierd,
---   },
--- })
+require('null-ls').setup({
+  sources = {
 
--- require('mason-null-ls').setup({ automatic_installation = true })
+    -- diagnostic
+    require('null-ls').builtins.diagnostics.eslint_d.with({ -- eslint_d - deamonise version, faster than standard eslint.
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })      -- will only active if there is eslint cofig file in particular project
+      end,
+    }),
+
+    -- trail space
+    require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
+
+    -- formatting
+    require('null-ls').builtins.formatting.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end,
+    }),
+
+    -- setup for pretier
+    require('null-ls').builtins.formatting.prettierd,
+  },
+})
+
+-- bridge mason.nvim with null-ls (now none-ls)
+require('mason-null-ls').setup({ automatic_installation = true })
 
 -- Keymaps
--- open diagnostic floating window
+-- open diagnostic floating window of the current line
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
 -- navigate through lsp diagnostics. ( [b or ]b ->  buffers)
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
@@ -104,9 +113,11 @@ vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 -- renaming linked variable
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
+-- registering a new command, Format, provide easy way to call lsp formatting command. Can be keymap instead
 -- Commands
 -- vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
-
+-- vim.keymap.set('n', '<Leader>lf', '<cmd>lua vim.lsp.buf.formatting<CR>')
+vim.api.nvim_create_user_command('Format', vim.lsp.buf.format, {})
 -- Diagnostic configuration
 vim.diagnostic.config({
   virtual_text = true, -- inline syntax error notification

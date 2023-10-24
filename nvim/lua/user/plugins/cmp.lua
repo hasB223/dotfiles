@@ -2,6 +2,20 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
+-- luasnip support variety of snippets format
+-- telss luasnip to look at any snipmate in our dirs.
+-- snippets should be place in nvim/snippets directory
+-- snippet filename: exp; php.snippets - need filetype name as filename
+-- code structure:
+-- snippet pubf "public method"
+-- 	public function ${1}(${2}): $3
+-- 	{
+-- 		${0}
+-- 	}
+-- 1 -> 2 -> 3 : where the cursor would jump,
+-- so user can just fill in the params and <tab>, 0 is where the cursor jump ends
+
+
 require('luasnip/loaders/from_snipmate').lazy_load()
 
 local has_words_before = function() -- determine to do word completion or indention
@@ -22,7 +36,7 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then -- if the completion menu is visible
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then -- if snippets have multiple jump points 
+      elseif luasnip.expand_or_jumpable() then -- if snippets have multiple jump points
         luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()

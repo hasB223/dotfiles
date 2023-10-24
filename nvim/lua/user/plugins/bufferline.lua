@@ -1,9 +1,9 @@
 require('bufferline').setup({
   options = {
-    indicator = {
-      icon = ' ',
-    },
-    show_close_icon = false,
+    -- indicator = {
+    --   icon = ' ',
+    -- },
+    -- show_close_icon = false,
     tab_size = 0,
     max_name_length = 25,
     offsets = {
@@ -14,12 +14,12 @@ require('bufferline').setup({
         text_align = 'left',
       },
     },
-    separator_style = 'slant',
+    separator_style = 'slant', --| { "⎛", "⎞" },  --'slant',left and right separator
     modified_icon = '󰔷', -- circle? 󰺕  󰐙 󰻃 󰔷 󰛄 
     custom_areas = { -- add vim logo
       left = function()
         return {
-          { text = '    ', fg = '#8fff6d' },
+          { text = '   ', fg = '#8fff6d' },
         }
       end,
     },
