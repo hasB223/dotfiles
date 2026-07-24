@@ -17,6 +17,7 @@ This runs `brew bundle --file=Brewfile` (installs everything below), then symlin
 | Source | Target |
 |---|---|
 | `kitty/` | `~/.config/kitty` |
+| `ghostty/` | `~/.config/ghostty` |
 | `tmux/tmux.conf` | `~/.tmux.conf` |
 | `nvim/` | `~/.config/nvim` |
 | `scripts/t` | `~/.local/bin/t` |
@@ -29,6 +30,7 @@ To remove everything: `./uninstall` (does not uninstall brew packages).
 
 ```
 kitty/kitty.conf     - terminal: font, theme, opacity, macOS Option-as-Alt fix
+ghostty/config       - alternate terminal, side-by-side trial (not a replacement yet)
 tmux/tmux.conf       - multiplexer: vi-mode, vim-aware pane nav, plugins
 nvim/                - LazyVim config
 scripts/t            - tmux session picker/creator (fzf-driven)

@@ -11,6 +11,10 @@ fi
 rm -rf $HOME/.config/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
 
+# Ghostty is a side-by-side trial alongside kitty, not a replacement yet.
+rm -rf $HOME/.config/ghostty
+ln -s $DOTFILES/ghostty $HOME/.config/ghostty
+
 rm -rf $HOME/.tmux.conf
 ln -s $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 

@@ -1,0 +1,29 @@
+# Ported from kitty/kitty.conf for a side-by-side trial - see
+# https://ghostty.org/docs/config/reference for the full option list.
+
+font-family = JetBrainsMono Nerd Font Mono
+font-family-bold = JetBrainsMono Nerd Font Mono
+font-family-italic = JetBrainsMono Nerd Font Mono
+font-family-bold-italic = JetBrainsMono Nerd Font Mono
+font-size = 16
+
+# kitty's `adjust_line_height 120%` (scale to 120% of original) is
+# expressed here as a +20% delta.
+adjust-cell-height = 20%
+
+cursor-style-blink = false
+
+window-padding-x = 15
+window-padding-y = 15
+
+background-opacity = 0.90
+background-blur = true
+
+# Matches kitty's current theme for a fair comparison. Ghostty also ships
+# "Catppuccin Mocha" built in if you'd rather match the new tmux theme
+# instead - just swap the line below.
+theme = GitHub Dark High Contrast
+
+# Same reason as kitty.conf's macos_option_as_alt: without this, Alt-prefixed
+# binds (nvim's Alt+j/k, tmux M-* binds) silently do nothing on macOS.
+macos-option-as-alt = true

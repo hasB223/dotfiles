@@ -13,6 +13,7 @@ brew "node" # required by several Mason-installed LSP servers (yaml/bash/docker)
 
 # --- terminal ---
 cask "kitty"
+cask "ghostty" # side-by-side trial, not a replacement (yet)
 cask "font-jetbrains-mono-nerd-font" # NFM variant - kitty.conf specifies the Mono-width icon glyphs
 
 # --- git / devops TUIs (companion tools, launched standalone - not nvim plugins) ---
