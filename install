@@ -2,6 +2,12 @@
 
 DOTFILES=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
+if command -v brew >/dev/null 2>&1; then
+  brew bundle --file="$DOTFILES/Brewfile"
+else
+  echo "Homebrew not found - skipping package install. See https://brew.sh, then re-run: brew bundle --file=\"$DOTFILES/Brewfile\""
+fi
+
 rm -rf $HOME/.config/kitty
 ln -s $DOTFILES/kitty $HOME/.config/kitty
 

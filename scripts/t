@@ -4,7 +4,7 @@
 
 # Define an array of frequently accessed directories
 frequent_directories=(
-    ~/Downloads/vim-tutorial
+    ~/Documents/Codes
     /tmp
     # Add more directories here
 )
