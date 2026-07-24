@@ -50,8 +50,11 @@ We don't use kitty's own window splits/layouts — tmux owns that (see below).
 | Install / update plugins (tpm) | `prefix I` / `prefix U` |
 | Save session layout | `prefix Ctrl+s` (tmux-resurrect) |
 | Restore session layout | `prefix Ctrl+r` (tmux-resurrect) |
+| Lazygit | `prefix g` |
+| k9s | `prefix K` |
+| Lazydocker | `prefix d` |
 
-tmux-continuum auto-restores the last saved layout on tmux start — no keybind needed.
+tmux-continuum auto-restores the last saved layout on tmux start — no keybind needed. The companion-tool binds above each open in a 90%-sized popup over the current pane, start in that pane's cwd, and close automatically on exit.
 
 ## Neovim (LazyVim)
 

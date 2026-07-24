@@ -45,7 +45,7 @@ Brewfile             - macOS package list
 - **DevOps CLIs**: `kubectl`, `terraform`, `ansible`
 - **Docker runtime**: not managed here - uses an existing Docker Desktop install. (Deliberately not adding Colima alongside it: both spin up their own VM and fight over the active `docker` CLI context; pick one runtime.)
 
-Launch the TUIs manually for now (`lazygit`, `k9s`, `lazydocker` in any pane/tmux window). tmux popup bindings to launch them with a keystroke are a planned addition, not done yet.
+Launched via tmux popup bindings: `prefix g` (lazygit), `prefix K` (k9s), `prefix d` (lazydocker) - each opens in a 90%-sized popup over the current pane, starts in that pane's cwd, and closes automatically on exit.
 
 ## Why Neovim stays lean
 
@@ -95,6 +95,5 @@ Kept OS-agnostic on purpose so a future fork only needs to touch a small surface
 ## Deferred
 
 Not part of this pass, intentionally:
-- New/redesigned keybindings and macros (next session)
-- tmux popup launchers for lazygit/k9s/lazydocker
+- New/redesigned keybindings and macros beyond the companion-tool popups (next session)
 - Creating the `linux`/`windows-wsl` branches themselves
