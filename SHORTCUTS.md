@@ -57,6 +57,8 @@ We don't use kitty's own window splits/layouts — tmux owns that (see below).
 
 tmux-continuum auto-restores the last saved layout on tmux start — no keybind needed. The companion-tool binds above each open in a 90%-sized popup over the current pane, start in that pane's cwd, and close automatically on exit.
 
+Resurrect's process-relaunch allowlist is extended with `claude` (`@resurrect-processes`), so a running Claude Code session in a pane gets relaunched (not just the empty pane layout) after a full tmux-server restart/reboot — on top of the default surviving plain detach/reattach with zero extra config either way.
+
 ## Neovim (LazyVim)
 
 Only the highlights are listed here — press `<leader>` (Space) and wait for the full, live, searchable which-key menu.
