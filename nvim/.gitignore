@@ -6,3 +6,7 @@ debug
 foo.*
 *.log
 data
+
+# LazyVim auto-generated local bookkeeping (news-read state, extras cache).
+# Extras are managed explicitly via lua/config/lazy.lua imports instead.
+lazyvim.json
