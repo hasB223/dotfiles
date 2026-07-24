@@ -71,7 +71,7 @@ Only the highlights are listed here — press `<leader>` (Space) and wait for th
 | Prev / next buffer | `Shift+H` / `Shift+L`, or `[b` / `]b` |
 | Delete buffer | `<leader>bd` |
 | Split below / right | `<leader>-` / `<leader>\|` |
-| Move line up/down | `Alt+j` / `Alt+k` (needs `macos_option_as_alt` in kitty) |
+| Move line(s) up/down (supports count, e.g. `5<A-j>`) | `Alt+j` / `Alt+k` (needs `macos_option_as_alt` in kitty) |
 
 ### Find & search (Snacks picker)
 | Action | Keys |
@@ -116,10 +116,9 @@ These are ours, not LazyVim defaults — see `nvim/lua/config/keymaps.lua`.
 | Reselect visual selection after indent | `<` / `>` (in visual mode) |
 | Yank without moving cursor | `y` (in visual mode) |
 | Paste over selection without clobbering register | `p` (in visual mode) |
-| Trailing `;` / `,` from insert mode | `;;` / `,,` |
+| Trailing `;` / `,` from insert mode | `;;` / `,,` (types literally instead, in `sh`/`bash` files - `;;` is the case-statement terminator there) |
 | Clear search highlight | `<leader>k` |
-| Prev / next buffer | `<leader>,` / `<leader>.` |
-| Open file in OS default program | `<leader>x` |
+| Open file in OS default program | `<leader>fo` (moved off `<leader>x`, which shadowed LazyVim's diagnostics/quickfix group) |
 
 ### Remote & devops-specific
 | Action | Keys / Command |
