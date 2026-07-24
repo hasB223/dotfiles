@@ -40,6 +40,7 @@ We don't use kitty's own window splits/layouts — tmux owns that (see below).
 | New window (in cwd) | `prefix c` |
 | New window via sessionizer (`t` script) | `prefix F` |
 | Jump to `~/Documents/Codes` session | `prefix D` |
+| Detach (session keeps running in background) | `prefix Q` — **not** the tmux-default `prefix d`, which is reassigned below |
 | Switch pane (vim-aware — falls through to nvim splits if focused pane is running vim) | `Ctrl+h/j/k/l` (no prefix needed) |
 | Switch pane (always tmux, repeatable) | `prefix h/j/k/l` |
 | Switch window | `prefix C-h` / `prefix C-l` (repeatable), or `prefix n` / `prefix p` |
