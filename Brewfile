@@ -21,8 +21,12 @@ brew "lazydocker"
 
 # --- devops CLIs ---
 brew "kubectl"
-brew "terraform"
 brew "ansible"
+
+# terraform was pulled from homebrew-core after HashiCorp's BSL license
+# change - it now lives in HashiCorp's own tap.
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
 
 # Docker runtime: using existing Docker Desktop install, not managed here.
 # (Don't add Colima alongside it - both spin up their own VM and fight over
