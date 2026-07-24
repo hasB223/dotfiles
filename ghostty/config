@@ -16,6 +16,12 @@ cursor-style-blink = false
 window-padding-x = 4
 window-padding-y = 4
 
+# Without this, leftover space that doesn't divide evenly into cell size
+# gets dumped unevenly (defaults to hugging the top-left corner) instead of
+# spread across all four edges - shows up as padding looking present on
+# some sides but missing on others.
+window-padding-balance = true
+
 background-opacity = 0.90
 background-blur = true
 
