@@ -4,6 +4,8 @@ Personal terminal setup: kitty + tmux + Neovim (LazyVim), oriented toward genera
 
 This branch targets **macOS**. `main` is the old Linux/`packer.nvim` snapshot from 2023. Future `linux` / `windows-wsl` branches are planned - see [Portability](#portability-future-linux--windows-wsl-branches) below for what's already kept OS-agnostic to make that easier.
 
+See [SHORTCUTS.md](SHORTCUTS.md) for the current keybinding reference across kitty, tmux, and Neovim.
+
 ## Install
 
 ```sh
